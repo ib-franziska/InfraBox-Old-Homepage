@@ -1,172 +1,715 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <link rel="shortcut icon" href="img/favicon.ico">
-    <link rel="icon" type="image/png" href="img/favicon-32x32.png" sizes="32x32">
-    <link rel="icon" type="image/png" href="img/favicon-96x96.png" sizes="96x96">
-    <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
-    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <meta charset="utf-8">
+    <meta name="robots" content="all,follow">
+    <meta name="googlebot" content="index,follow,snippet,archive">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>InfraBox</title>
 
-    <style>
-        body {
-            background-color: #293846;
-            color: #f3f3f4;
-            font-family: 'Roboto', sans-serif;
-            font-size: 48px;
-        }
+    <meta name="keywords" content="">
 
-        a {
-            background-color: #293846;
-            border-style: none;
-            color: #f3f3f4;
-            font-family: 'Roboto', sans-serif;
-            font-size: 25px;
-            font-weight: bold;
-            text-decoration: none;
-        }
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,500,700,800' rel='stylesheet' type='text/css'>
 
-        a.login {
-            background-color: #23c6c8;
-            border-radius: 5%;
-            box-shadow: 2px 2px 10px 0px grey;
-            padding: 10px;
-            position: fixed;
-            right: 5%;
-            text-align: center;
-            width: 125px;
-        }
+    <!-- Bootstrap and Font Awesome css -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 
-        a.link {
-            color: #23c6c8;
-            background-color: transparent;
-            font-size: inherit;
-        }
+    <!-- Css animations  -->
+    <link href="css/animate.css" rel="stylesheet">
 
-        img.icon {
-            height: 25px;
-            padding-right: 5px;
-            vertical-align: middle;
-        }
+    <!-- Theme stylesheet, if possible do not edit this stylesheet -->
+    <link href="css/style.default.css" rel="stylesheet" id="theme-stylesheet">
 
-        footer {
-            position: fixed;
-            top: 90%;
-        }
+    <!-- Custom stylesheet - for your changes -->
+    <link href="css/custom.css" rel="stylesheet">
 
-        /* Popup container - can be anything you want */
+    <!-- Responsivity for older IE -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
 
-        .popup {
-            background-color: #293846;
-            border-style: none;
-            color: #f3f3f4;
-            font-family: 'Roboto', sans-serif;
-            font-size: 25px;
-            font-weight: bold;
-            cursor: pointer;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            text-align: left;
-            user-select: none;
-        }
+    <!-- Favicon and apple touch icons-->
+    <link rel="shortcut icon" href="img_ib/favicon/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="img_ib/favicon/apple-touch-icon.png" />
+    <link rel="apple-touch-icon" sizes="57x57" href="img_ib/favicon/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="img_ib/favicon/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="76x76" href="img_ib/favicon/apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="img_ib/favicon/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon" sizes="120x120" href="img_ib/favicon/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="img_ib/favicon/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="img_ib/favicon/apple-touch-icon-152x152.png" />
+    <!-- owl carousel css -->
 
-        /* The actual popup */
-
-        .popup .popuptext {
-            visibility: hidden;
-            background-color: #f3f3f4;
-            color: #293846;
-            font-size: 16px;
-            text-align: left;
-            border-radius: 6px;
-            padding: 15px;
-            position: absolute;
-            z-index: 1;
-            bottom: 125%;
-            right: 5%;
-            margin-left: -80px;
-            width: 250%;
-        }
-
-        /* Popup arrow */
-
-        .popup .popuptext::after {
-            content: "";
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            margin-left: -5px;
-            border-width: 5px;
-            border-style: solid;
-            border-color: #555 transparent transparent transparent;
-        }
-
-        /* Toggle this class - hide and show the popup */
-
-        .popup .show {
-            visibility: visible;
-            -webkit-animation: fadeIn 1s;
-            animation: fadeIn 1s;
-        }
-
-        /* Add animation (fade in the popup) */
-
-        @-webkit-keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-
-    </style>
+    <link href="css/owl.carousel.css" rel="stylesheet">
+    <link href="css/owl.theme.css" rel="stylesheet">
 </head>
-<header>
-    <a href="/dashboard/#/login" class="login"><img src="img/fa-signin.svg" class="icon"/><span> Login</span></a>
-</header>
 
 <body>
-    <img src="img/logo_compact_light.png" width=50% style="position: fixed; top: 25%; left: 25%;" />
-</body>
+    <a href="https://github.com/infrabox/infrabox" target="_blank" class="hidden-xs">
+        <img style="z-index: 1000; position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/52760788cde945287fbb584134c4cbc2bc36f904/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f77686974655f6666666666662e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png">
+    </a>
+    <div id="all">
 
-<footer>
-    <a href="https://github.com/infrabox/infrabox" target="_blank" style="position: fixed; left: 5%"><img src="img/fa-git.svg" class="icon"/><span> GitHub</span></a>
-    <a href="/docs" target="_blank" style="position: fixed; left: 50%; width: 250px; margin-left: -125px"><img src="img/fa-book.svg" class="icon"/><span> Documentation</span></a>
+        <header>
+            <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
 
-    <div class="popup" onclick="myFunction()" style="position: fixed; right: 5%"><img src="img/fa-envelope.svg" class="icon" /><span> Contact</span>
-        <span class="popuptext" id="myPopup">
-            <address>
-                <h1>Impressum</h1>
-                <h2>Angaben gem&auml;&szlig; &sect; 5 TMG:</h2>
-                <p>InfraBox UG (haftungsbeschr&auml;nkt)<br /> Papa-Stra&szlig;e 23<br /> 68723 Schwetzingen</p>
-                <h2>Vertreten durch:</h2>
-                <p>Franziska Schilling</p>
-                <h2>Kontakt:</h2><p> E-Mail: info@infrabox.net</p>
-                <h2>Registereintrag:</h2> <p>Eintragung im Handelsregister. <br /> Registergericht:Amtsgericht Mannheim <br /> Registernummer: HRB 728914</p>
-            </address>
-        </span>
+                <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+
+                    <div class="container">
+                        <div class="navbar-header">
+
+                            <a class="navbar-brand home" href="index.html">
+                                <img src="img_ib/logo_compact_transparent.png" alt="InfraBox logo" class="hidden-xs hidden-sm" style="width:150px">
+                                <img src="img_ib/logo_compact_transparent.png" alt="InfraBox logo" class="visible-xs visible-sm" style="width:120px"><span class="sr-only">InfraBox - go to homepage</span>
+                            </a>
+                            <div class="navbar-buttons">
+                                <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <i class="fa fa-align-justify"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <!--/.navbar-header -->
+
+                        <div class="navbar-collapse collapse" id="navigation">
+
+                            <ul class="nav navbar-nav navbar-right">
+                                <li class="active">
+                                    <a href="#" class="inherit-font">Home</a>
+                                </li>
+                                <li class="use-yamm yamm-fw">
+                                    <a href="#overview" class="inherit-font">Overview</a>
+                                </li>
+                                <li class="use-yamm yamm-fw">
+                                    <a href="#features" class="inherit-font">Features</a>
+                                </li>
+                                <li class="use-yamm yamm-fw">
+                                    <a href="#usecases" class="inherit-font">Use Cases</a>
+                                </li>
+                                <li class="use-yamm yamm-fw">
+                                    <a href="#copyright" class="inherit-font">Contact</a>
+                                </li>
+                                <li class="use-yamm yamm-fw">
+                                    <a href="https://infrabox.ninja/docs/" target="_blank" class="inherit-font"><i class="fa fa-external-link"></i>Documentation</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!--/.nav-collapse -->
+
+
+
+                        <div class="collapse clearfix" id="search">
+
+                            <form class="navbar-form" role="search">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Search">
+                                    <span class="input-group-btn">
+
+                    <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>
+
+                </span>
+                                </div>
+                            </form>
+
+                        </div>
+                        <!--/.nav-collapse -->
+
+                    </div>
+
+
+                </div>
+                <!-- /#navbar -->
+
+            </div>
+
+            <!-- *** NAVBAR END *** -->
+
+        </header>
+
+        <!-- *** LOGIN MODAL ***
+_________________________________________________________ -->
+
+        <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true">
+            <div class="modal-dialog modal-sm">
+
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="Login">Customer login</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form action="customer-orders.html" method="post">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="email_modal" placeholder="email">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" id="password_modal" placeholder="password">
+                            </div>
+
+                            <p class="text-center">
+                                <button class="btn btn-template-main"><i class="fa fa-sign-in"></i> Log in</button>
+                            </p>
+
+                        </form>
+
+                        <p class="text-center text-muted">Not registered yet?</p>
+                        <p class="text-center text-muted"><a href="customer-register.html"><strong>Register now</strong></a>! It is easy and done in 1&nbsp;minute and gives you access to special discounts and much more!</p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- *** LOGIN MODAL END *** -->
+
+        <section>
+            <!-- *** HOMEPAGE CAROUSEL ***
+ _________________________________________________________ -->
+
+            <div class="home-carousel">
+
+                <div class="dark-mask"></div>
+
+                <div class="container">
+                    <div class="">
+                        <img src="img_ib/logo_white_on_transparent.png" alt="" width="60%" style="padding: 7%">
+                    </div>
+                </div>
+            </div>
+
+            <!-- *** HOMEPAGE CAROUSEL END *** -->
+        </section>
+        <section class="background-white">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                        <div class="heading">
+                            <h3>Projects</h3>
+                        </div>
+                        <ul class="ul-icons">
+                            <li><i class="fa fa-check"></i>Perfect for cloud native applications</li>
+                            <li><i class="fa fa-check"></i>Native Docker &amp; Kubernetes support</li>
+                            <li><i class="fa fa-check"></i>Build, test and deploy your projects</li>
+                            <li><i class="fa fa-check"></i>... or run any other task in a container</li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                        <div class="heading">
+                            <h3>Overview</h3>
+                        </div>
+
+                        <ul class="ul-icons">
+                            <li><i class="fa fa-check"></i>Real-time graph of your workflows</li>
+                            <li><i class="fa fa-check"></i>All tests results at one glance</li>
+                            <li><i class="fa fa-check"></i>Create custom output</li>
+                            <li><i class="fa fa-check"></i>All information in one place</li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                        <div class="heading">
+                            <h3>Flexibility</h3>
+                        </div>
+
+                        <ul class="ul-icons">
+                            <li><i class="fa fa-check"></i>Serverless computing for full flexibility</li>
+                            <li><i class="fa fa-check"></i>Set limits for CPU and memory</li>
+                            <li><i class="fa fa-check"></i>Run jobs in parallel</li>
+                            <li><i class="fa fa-check"></i>Optimal resource utilization</li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                        <div class="heading">
+                            <h3>Reproducibility</h3>
+                        </div>
+
+                        <ul class="ul-icons">
+                            <li><i class="fa fa-check"></i>Download jobs to your local machine</li>
+                            <li><i class="fa fa-check"></i>Get all prerequisites to run</li>
+                            <li><i class="fa fa-check"></i>No ssh into your build machines anymore</li>
+                            <li><i class="fa fa-check"></i>No "works for me" anymore</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="about" class="bar background-ib no-mb color-white text-center">
+            <div class="container">
+                <div class="heading text-center">
+                    <h2>What is InfraBox?</h2>
+                </div>
+                <div class="row">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-6">
+                        <div class="video">
+                            <div class="embed-responsive embed-responsive-16by9">
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/O8N2U7d404I?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3"></div>
+                </div>
+            </div>
+        </section>
+        <section id="overview" class="bar background-white">
+            <div class="container">
+                <div class="heading text-center">
+                    <h2>Overview</h2>
+                </div>
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="box-simple">
+                                <div class="icon">
+                                    <i class="fa fa-tasks"></i>
+                                </div>
+                                <h3>Manage your project</h3>
+                                <p class="text-justify">Once set up, you always have a reproducible environment, ideal for benchmarks and testing. You can be sure that all environment variables are set and necessary libraries are available with their correct versions.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="box-simple">
+                                <div class="icon">
+                                    <i class="fa fa-bar-chart"></i>
+                                </div>
+                                <h3>Real-time build visualization</h3>
+                                <p class="text-justify">InfraBox creates a graph for each of your workflows. Changes of the contained jobs are updated instantly. So you are always up to date what's going on and can check if your machine configuration fulfills the requirements of your process.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="box-simple">
+                                <div class="icon">
+                                    <i class="fa fa-sitemap"></i>
+                                </div>
+                                <h3>Reuse workflows as unit</h3>
+                                <p class="text-justify">Any workflow can be integrated into others. Define a workflow as dependency for other jobs or workflows. It can require inputs from or provide output for other units in your current graph - just like any integrated single job does.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="box-simple">
+                                <div class="icon">
+                                    <i class="fa fa-trophy"></i>
+                                </div>
+                                <h3>Optimize your build process</h3>
+                                <p class="text-justify">Configure which job has to wait for another one - we run all jobs in their required order and parallelize jobs which can be run independently.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="box-simple">
+                              <!--  <div class="icon">
+                                    <i class="fa fa-desktop"></i>
+                                </div>
+                                <h3>Machine on demand</h3>
+                                <p class="text-justify">No need to rent or buy your own servers. We provide the resources, you configure your required line-up.</p>-->
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="box-simple">
+                                <div class="icon">
+                                    <i class="fa fa-chain"></i>
+                                </div>
+                                <h3>Integrations</h3>
+                                <p class="text-justify">InfraBox integrates with Gerrit, GitHub, LDAP. You can use GitHub or LDAP to authenticate your users. Also every push to your GitHub or Gerrit repository may trigger a workflow to build, test and deploy your project.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="bar no-mb padding-big text-center">
+            <div class="container text-center">
+                <h3 class="text-white"><i class="fa fa-cubes"></i><span> Try it out </span><i class="fa fa-cubes"></i></h3>
+                <div class="text-white p-t-md p-b-xl">
+                    <h4 class="text-white">Visit our free InfraBox playground.</h4>
+                    <p>Set up your first project with InfraBox and get to know the great InfraBox features.</p>
+                </div>
+                <a role="button" href="https://infrabox.ninja/dashboard/#/login" target="_blank" class="btn btn-default btn-lg"><img src="img_ib/favicon/favicon-32x32.png" /> infrabox.ninja</a>
+                <div class="text-white p-t-xxl">
+                    <p><i class="fa fa-info-circle"></i><span> Have a look at the InfraBox quickstart guides: </span> <a style="text-decoration: underline; font-weight: bold; color: inherit" href="https://github.com/InfraBox/infrabox/blob/master/docs/guides/connect_github.md" target="_blank">"How to connect a GitHub repository"</a> and <a style="text-decoration: underline; font-weight: bold; color: inherit" href="https://github.com/InfraBox/infrabox/blob/master/docs/guides/upload.md" target="_blank">"How to upload a build"</a></p>
+                </div>
+            </div>
+        </section>
+        <section id="features" class="bar background-gray no-mb padding-big text-center-sm">
+            <div class="container">
+                <div class="heading text-center">
+                    <h2>Features</h2>
+                    <p class="lead text-center p-t-md">Optimize your build process. Analyze problems easier. Be efficient.</p>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row bg-white p-t-xl p-b-xl">
+                    <div class="col-md-6">
+                        <h2 class="text-uppercase">Workflows</h2>
+                        <p class="lead mb-small">Ease up the daily business</p>
+                        <p class="text-justify mb-small">InfraBox allows you to split up your complex build into a workflow of several easier to handle jobs. With our intuitive configuration you can define dependencies between the single jobs. So the output of every job can be used as input for the others. InfraBox executes them in this predefined order, parallelizing all that are independent from each other.<br>Each workflow can be used as part of other workflows, so you can easily create a clear structure for better comprehensibility and ideal for collaboration.</p>
+                        <p>Your workflows can be static ones that are predefined, so you are able to model your your build process the way it fits your needs. On the other hand InfraBox provides the means to design <strong>dynamic</strong> workflows, e.g. to react on git tags or adjust to the needs of different branches.</p>
+
+                        <p><a href="https://infrabox.ninja/docs/" target="_blank" class="btn btn-template-main">Learn more</a>
+                        </p>
+                    </div>
+                    <div class="col-md-6 text-center hidden-xs">
+                        <img src="img_ib/dependencies.png" alt="Workflow" class="img-responsive" width=100% class="border-gray">
+                    </div>
+                    <div class="col-md-6 text-center hidden-lg hidden-md hidden-xl hidden-sm">
+                        <img src="img_ib/dependencies.png" alt="Workflow" class="img-responsive" width=100% class="border-gray">
+                    </div>
+                </div>
+            </div>
+            <div class="container m-t-xl">
+                <div class="row bg-white p-t-xl p-b-xl">
+                    <div class="col-md-6 text-center hidden-xs">
+                        <img src="img_ib/examples.png" alt="Dashboard" class="img-responsive" width=100% class="border-gray">
+                    </div>
+                    <div class="col-md-6">
+                        <h2 class="text-uppercase">Build Dashboard</h2>
+                        <p class="lead mb-small">Everything at a glance</p>
+                        <p class="text-justify mb-small">The InfraBox Dashboard visualizes your workflow as dependency graph. While your build is running the graph is updated in real-time.<br>You can use the Dashboard to:</p>
+                        <ul class="text-justify">
+                            <li>
+                                check the state of your build and its jobs.
+                            </li>
+                            <li>
+                                validate if your workflow is designed best.
+                            </li>
+                            <li>
+                                restart or stop the build process or clear its cache.
+                            </li>
+                            <li>
+                                get all badges that are created during your build (e.g. for code coverage or other validation checks)
+                            </li>
+                            <!--                          <li>
+                                get information about the commit itself and get redirected to GitHub if neccessary.
+                            </li>
+                            <li>
+                                check the changes made during the last commit.
+                            </li>-->
+                        </ul>
+                        <p><a href="https://infrabox.ninja/docs/" class="btn btn-template-main">Learn more</a>
+                        </p>
+                    </div>
+                    <div class="col-md-6 text-center hidden-lg hidden-md hidden-xl hidden-sm">
+                        <img src="img_ib/examples.png" alt="Dashboard" class="img-responsive" width=100% class="border-gray">
+                    </div>
+                </div>
+            </div>
+            <div class="container m-t-xl">
+                <div class="row bg-white p-t-xl p-b-xl">
+                    <div class="col-md-6">
+                        <h2 class="text-uppercase">Job Details</h2>
+                        <p class="lead mb-small">All details where they're needed</p>
+                        <p class="text-justify mb-small">InfraBox tracks all important facts about your job, so you've got everything important at one place. Get information about its duration, its state and - if it's a hosted project - the commit it belongs to. At the project overview page you get the whole console output for the job, so you can always check what's going on without any additional log files.<br/>To optimize the duration of your runs InfraBox caches your metadata for each job and each node. So you don't waste your capacities for the same routines again and again.</p>
+                        <p><a href="https://infrabox.ninja/docs/" class="btn btn-template-main">Learn more</a>
+                        </p>
+                    </div>
+                    <div class="col-md-6 text-center hidden-xs">
+                        <img src="img_ib/test.png" alt="Job Details" class="img-responsive" width=100% class="border-gray">
+                    </div>
+                    <div class="col-md-6 text-center hidden-lg hidden-md hidden-xl hidden-sm">
+                        <img src="img_ib/test.png" alt="Job Details" class="img-responsive" width=100% class="border-gray">
+                    </div>
+                </div>
+            </div>
+            <!--            <div class="container m-t-xl">
+                <div class="row bg-white p-t-xl p-b-xl">
+                    <div class="col-md-6 text-center hidden-xs">
+                        <img src="img_ib/test-chart.png" alt="Test Results" class="img-responsive" width=100% class="border-gray">
+                    </div>
+                    <div class="col-md-6">
+                        <h2 class="text-uppercase">Test Result Visualization</h2>
+                        <p class="lead mb-small">Keep an eye on your tests</p>
+                        <p class="text-justify mb-small">If your jobs contain tests, InfraBox visualizes their results and duration and compares them to the previous runs. So you can easily check if they improve or if there are unusual peaks.<br> When a test fails its error message and stack trace are recorded. There is no need to check your log files in other systems to know what's going on.</p>
+
+                        <p><a href="https://infrabox.ninja/docs/" class="btn btn-template-main">Learn more</a>
+                        </p>
+                    </div>
+                    <div class="col-md-6 text-center hidden-lg hidden-md hidden-xl hidden-sm">
+                        <img src="img_ib/test-chart.png" alt="Test Results" class="img-responsive" width=100% class="border-gray">
+                    </div>
+                </div>
+            </div>-->
+            <!-- <div class="container m-t-xl">
+                <div class="row bg-white p-t-xl p-b-xl">
+                    <div class="col-md-6 text-center hidden-xs">
+                        <img src="img_ib/stats.png" alt="Test Results" class="img-responsive" width=100% class="border-gray">
+                    </div>
+                    <div class="col-md-6">
+                        <h2 class="text-uppercase">Statistics</h2>
+                        <p class="lead mb-small">Observe CPU and memory utilization</p>
+                        <p class="text-justify mb-small">Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum</p>
+
+                        <p><a href="https://infrabox.ninja/docs/" class="btn btn-template-main">Learn more</a>
+                        </p>
+                    </div>
+                    <div class="col-md-6 text-center hidden-lg hidden-md hidden-xl hidden-sm">
+                        <img src="img_ib/stats.png" alt="Test Results" class="img-responsive" width=100% class="border-gray">
+                    </div>
+                </div>
+            </div>-->
+            <div class="container m-t-xl">
+                <div class="row bg-white p-t-xl p-b-xl">
+                    <div class="col-md-6 text-center hidden-xs">
+                        <img src="img_ib/custom_output.png" alt="Custom Output" class="img-responsive" width=100% class="border-gray" class="border-gray">
+                    </div>
+                    <div class="col-md-6">
+                        <h2 class="text-uppercase">Customizable Output</h2>
+                        <p class="lead mb-small">Your job, your output.</p>
+                        <p class="text-justify mb-small">InfraBox offers an easy to use annotation to generate custom output panels. Those panels are integrated in the job details page and perfectly complement the standard job output. Use these custom panels to:
+                        </p>
+                        <ul class="text-justify">
+                            <li>create reports for your analysis tools (e.g. code coverage, security checkers...)</li>
+                            <li>summarize your special job output (e.g. metrics, calculation results...)</li>
+                            <li>generate job documentation and reports</li>
+                        </ul>
+                        <p><a href="https://infrabox.ninja/docs/" class="btn btn-template-main">Learn more</a>
+                        </p>
+                    </div>
+                    <div class="col-md-6 text-center hidden-lg hidden-md hidden-xl hidden-sm">
+                        <img src="img_ib/custom_output.png" alt="Custom Output" class="img-responsive" width=100% class="border-gray">
+                    </div>
+                </div>
+            </div>
+            <div class="container m-t-xl">
+                <div class="row bg-white p-t-xl p-b-xl">
+                    <div class="col-md-6">
+                        <h2 class="text-uppercase">Command Line Tool</h2>
+                        <p class="lead mb-small">Your local connection to InfraBox</p>
+                        <p class="text-justify mb-small">From your command line you can control several InfraBox features:
+                        </p>
+                        <ul class="text-justify">
+                            <li>
+                                Restart or stop your build.
+                            </li>
+                            <li>
+                                Download single jobs to reproduce them locally.
+                            </li>
+                            <li>
+                                Upload your results to InfraBox.
+                            </li>
+                            <li>
+                                Visualize dependencies and results of local projects on your InfraBox Dashboard.
+                            </li>
+                        </ul>
+                        <p><a href="https://infrabox.ninja/docs/" class="btn btn-template-main">Learn more</a>
+                        </p>
+                    </div>
+                    <div class="col-md-6 text-center hidden-xs">
+                        <img src="img_ib/shell.png" alt="Command Line Tool" class="img-responsive" width=100% class="border-gray">
+                    </div>
+                    <div class="col-md-6 text-center hidden-lg hidden-md hidden-xl hidden-sm">
+                        <img src="img_ib/shell.png" alt="Command Line Tool" class="img-responsive" width=100% class="border-gray">
+                    </div>
+                </div>
+            </div>
+            <div class="container m-t-xl">
+                <div class="row bg-white p-t-xl p-b-xl">
+                    <div class="col-md-6">
+                        <h2 class="text-uppercase">Cloud native CI/CD</h2>
+                        <p class="lead mb-small">From the cloud, for the cloud</p>
+                        <p class="text-justify mb-small">InfraBox is a serverless computing platform that is specialised on CI/CD. With its native Docker, Docker Compose and Kubernetes support, it's perfect for your cloud native applications. You can build them within the InfraBox cluster and directly deploy them as cloud application at your host - like we do this with InfraBox itself, too.
+                        </p>
+                        <p><a href="https://infrabox.ninja/docs/" class="btn btn-template-main">Learn more</a>
+                        </p>
+                    </div>
+                    <div class="col-md-6 text-center hidden-xs">
+                        <img src="img_ib/cloud.png" alt="Command Line Tool" class="img-responsive" width=100% class="border-gray">
+                    </div>
+                    <div class="col-md-6 text-center hidden-lg hidden-md hidden-xl hidden-sm">
+                        <img src="img_ib/cloud.png" alt="Command Line Tool" class="img-responsive" width=100% class="border-gray">
+                    </div>
+                </div>
+            </div>
+            <div class="container m-t-xl">
+                <div class="row bg-white p-t-xl p-b-xl">
+                    <div class="col-md-6 text-center hidden-xs">
+                        <img src="img_ib/integratedConfig.png" alt="Command Line Tool" class="img-responsive" width=75% class="border-gray">
+                    </div>
+                    <div class="col-md-6">
+                        <h2 class="text-uppercase">Fully integrated configuration</h2>
+                        <p class="lead mb-small">All the flexibility you need</p>
+                        <p class="text-justify mb-small">Your complete build configuration you need to run your build on InfraBox is part of your repository. With an easy to use configuration file you set up your build graph and the dependencies between the Docker files of your single jobs. Never again you'll have to login to a build machine.<br/>InfraBox enables you to get full control about the resources your jobs use. Just limit or increase the number of CPUs or the memory a job can utilize by a simple change of details in your configuration file.
+                        </p>
+                        <p><a href="https://infrabox.ninja/docs/" class="btn btn-template-main">Learn more</a>
+                        </p>
+                    </div>
+                    <div class="col-md-6 text-center hidden-lg hidden-md hidden-xl hidden-sm">
+                        <img src="img_ib/integratedConfig.png" alt="Command Line Tool" class="img-responsive" width=75% class="border-gray">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="usecases" class="bar background-white no-mb">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="heading text-center">
+                            <h2>Use Cases</h2>
+                        </div>
+
+                        <p class="lead text-center">Get inspired. Improve your workflows. Containerize your project.</p>
+
+
+                        <!-- *** testimonials CAROUSEL ***
+ _________________________________________________________ -->
+
+                        <ul class="owl-carousel testimonials same-height-row usecase-item">
+                            <li class="item b-l-r">
+                                <div class="testimonial same-height-always">
+                                    <div class="text">
+                                        <p><strong> Who benefits from InfraBox?</strong></p>
+                                        <div class="p-t-sm">
+                                            <i class="fa fa-fw fa-linux fa-2x m-r-sm" aria-hidden="true"></i>Software projects building on <strong>Linux</strong> operating systems
+                                        </div>
+                                        <div class="p-t-sm">
+                                            <i class="fa fa-fw fa-code-fork fa-2x m-r-sm" aria-hidden="true"></i>Developers that want to realize <strong>CI / CD</strong> for their projects
+                                        </div>
+                                        <div class="p-t-sm">
+                                            <i class="fa fa-fw fa-bug fa-2x m-r-sm" aria-hidden="true"></i>People trying to <strong>reproduce</strong> software errors
+                                        </div>
+
+                                        <div class="p-t-sm" style="opacity:0">
+                                            <i class="fa fa-fw fa-circle fa-2x m-r-sm" aria-hidden="true"></i>xxx
+                                        </div>
+
+                                        <p class="m-t-xl"><strong> What can InfraBox do for you?</strong></p>
+                                        <div class="p-t-sm">
+                                            <i class="fa fa-fw fa-server fa-2x m-r-sm" aria-hidden="true"></i>Offers a <strong>serverless computing platform</strong>
+                                        </div>
+                                        <div class="p-t-sm">
+                                            <i class="fa fa-fw fa-tasks fa-2x m-r-sm" aria-hidden="true"></i>Builds, tests and <strong>deploys</strong> your software project
+                                        </div>
+                                        <div class="p-t-sm">
+                                            <i class="fa fa-fw fa-sitemap fa-2x m-r-sm" aria-hidden="true"></i>Lets you split up you project to <strong>reduce complexity</strong>
+                                        </div>
+                                        <div class="p-t-sm">
+                                            <i class="fa fa-fw fa-line-chart fa-2x m-r-sm" aria-hidden="true"></i><strong>Parallelizes</strong> your jobs to speed up your builds
+                                        </div>
+                                        <div class="p-t-sm">
+                                            <i class="fa fa-fw fa-copy fa-2x m-r-sm" aria-hidden="true"></i>Can <strong>reproduce</strong> every job, everywhere, everytime
+                                        </div>
+                                        <div class="p-t-sm">
+                                            <i class="fa fa-fw fa-bar-chart fa-2x m-r-sm" aria-hidden="true"></i><strong>Visualizes</strong> your test results and your <strong>custom output</strong>
+                                        </div>
+                                    </div>
+                                    <div class="bottom">
+                                        <div class="icon"><i class="fa fa-trophy"></i></div>
+                                        <div class="name-picture">
+                                            <h5>Build Process Optimization</h5>
+                                            <p>Avoid routine jobs. Be more efficient.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="item b-l-r">
+                                <div class="testimonial same-height-always">
+                                    <div class="text">
+                                        <p><strong> Who benefits from InfraBox?</strong></p>
+                                        <div class="p-t-sm"><i class="fa fa-flask fa-2x fa-fw m-r-sm" aria-hidden="true"></i>Scientist running <strong>complex calculations</strong></div>
+                                        <div class="p-t-sm"><i class="fa fa-wrench fa-2x fa-fw m-r-sm" aria-hidden="true"></i>Engineers with <strong>Computer Aided Engineering</strong> tasks</div>
+                                        <div class="p-t-sm"><i class="fa fa-gears fa-2x fa-fw m-r-sm" aria-hidden="true"></i>Designer of <strong>big, complex</strong> software components</div>
+                                        <div class="p-t-sm"><i class="fa fa-random fa-2x fa-fw m-r-sm" aria-hidden="true"></i>Computing tasks with <strong>changing hardware requirements</strong></div>
+                                        <p class="m-t-xl"><strong> What can InfraBox do for you?</strong></p>
+                                        <div class="p-t-sm"><i class="fa fa-server fa-2x fa-fw m-r-sm" aria-hidden="true"></i>Runs your <strong>computing </strong>jobs</div>
+                                        <div class="p-t-sm"><i class="fa fa-laptop fa-2x fa-fw m-r-sm" aria-hidden="true"></i>Offers different <strong>machine configurations</strong> to choose</div>
+                                        <div class="p-t-sm"><i class="fa fa-sliders fa-2x fa-fw m-r-sm" aria-hidden="true"></i>Enables you to try <strong>different variants simulatanously</strong></div>
+                                        <div class="p-t-sm"><i class="fa fa-crosshairs fa-2x fa-fw m-r-sm" aria-hidden="true"></i>Lets you <strong>focus on your project</strong> not your servers</div>
+                                        <div class="p-t-sm"><i class="fa fa-expand fa-2x fa-fw m-r-sm" aria-hidden="true"></i>Provides a <strong>scalable cluster</strong> without long-term contracts</div>
+                                        <div class="p-t-sm"><i class="fa fa-download fa-2x fa-fw m-r-sm" aria-hidden="true"></i>Lets you <strong>reproduce</strong> the variants <strong>locally</strong></div>
+                                    </div>
+                                    <div class="bottom">
+                                        <div class="icon"><i class="fa fa-flask"></i>
+                                        </div>
+                                        <div class="name-picture">
+                                            <h5>Outsource Advanced Computing</h5>
+                                            <p>Stop waiting for your results.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="item b-l-r">
+                                <div class="testimonial same-height-always">
+                                    <div class="text">
+                                        <p><strong> Who benefits from InfraBox?</strong></p>
+                                        <div class="p-t-sm"><i class="fa fa-file-text-o fa-2x fa-fw m-r-sm" aria-hidden="true"></i>Analysts <strong>evaluating data</strong> and creating reports</div>
+                                        <div class="p-t-sm"><i class="fa fa-area-chart fa-2x fa-fw m-r-sm" aria-hidden="true"></i>Developers making <strong>perfomance tests</strong></div>
+                                        <div class="p-t-sm"><i class="fa fa-balance-scale fa-2x fa-fw m-r-sm" aria-hidden="true"></i>Tester needing <strong>comparable results</strong></div>
+                                        <div class="p-t-sm"><i class="fa fa-medkit fa-2x fa-fw m-r-sm" aria-hidden="true"></i>Administrator doing <strong>regular</strong> system health <strong>checks</strong></div>
+                                        <p class="m-t-xl"><strong> What can InfraBox do for you?</strong></p>
+                                        <div class="p-t-sm"><i class="fa fa-play-circle-o fa-2x fa-fw m-r-sm" aria-hidden="true"></i>Lets easily <strong>restart and stop</strong> once set up batch jobs</div>
+                                        <div class="p-t-sm"><i class="fa fa-paint-brush fa-2x fa-fw m-r-sm" aria-hidden="true"></i>Can create <strong>custom output</strong> to document your results</div>
+                                        <div class="p-t-sm"><i class="fa fa-search fa-2x fa-fw m-r-sm" aria-hidden="true"></i><strong>Collects your job logs</strong> so you've got all at one spot</div>
+                                        <div class="p-t-sm"><i class="fa fa-copy fa-2x fa-fw m-r-sm" aria-hidden="true"></i>Helps to <strong>reproduce and check</strong> your job locally</div>
+                                        <div class="p-t-sm"><i class="fa fa-expand fa-2x fa-fw m-r-sm" aria-hidden="true"></i>Offers <strong>flexible infrastructure</strong> for irregular tasks</div>
+                                        <div class="p-t-sm"><i class="fa fa-cube fa-2x fa-fw m-r-sm" aria-hidden="true"></i>Uses <strong>Docker</strong> as stable, handy environment</div>
+                                    </div>
+                                    <div class="bottom">
+                                        <div class="icon"><i class="fa fa-list-alt"></i>
+                                        </div>
+                                        <div class="name-picture">
+                                            <h5>Run Your Batch Jobs</h5>
+                                            <p>Get a stable environment and better documentation.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        <!-- /.owl-carousel -->
+
+                        <!-- *** testimonials CAROUSEL END *** -->
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- *** COPYRIGHT ***-->
+
+        <div id="copyright">
+            <div class="container">
+                <div class="col-md-12">
+                    <h4 class="text-white">Contact</h4>
+
+                    <p><strong>InfraBox UG (haftungsbeschränkt)</strong>
+                        <br>Papa-Straße 23
+                        <br>68723 Schwetzingen
+                        <br><strong>Germany</strong>
+                        <br> Managing Director: Franziska Schilling
+                    </p>
+
+                    <hr class="hidden-md hidden-lg hidden-sm">
+
+                    <p class="pull-left">&copy; 2017. InfraBox UG (haftungsbeschränkt)</p>
+
+                </div>
+            </div>
+        </div>
+        <!-- *** COPYRIGHT END *** -->
+
+
     </div>
+    <!-- /#all -->
+
+    <!-- #### JAVASCRIPT FILES ### -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script>
-        // When the user clicks on <div>, open the popup
-        function myFunction() {
-            var popup = document.getElementById("myPopup");
-            popup.classList.toggle("show");
-        }
+        window.jQuery || document.write('<script src="js/jquery-1.11.0.min.js"><\/script>')
 
     </script>
-</footer>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+    <script src="js/jquery.cookie.js"></script>
+    <script src="js/waypoints.min.js"></script>
+    <script src="js/jquery.counterup.min.js"></script>
+    <script src="js/jquery.parallax-1.1.3.js"></script>
+    <script src="js/front.js"></script>
+
+    <!-- owl carousel -->
+    <script src="js/owl.carousel.min.js"></script>
+</body>
 
 </html>
